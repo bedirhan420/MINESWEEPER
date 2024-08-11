@@ -136,7 +136,7 @@ class MineSweeper:
         self.flag_label.config(text=f"🚩: {self.flags_left}", fg="black")
 
     def check_win_condition(self):
-        non_mine_buttons = set((r, c) for r in range(self.rows) for c in range(self.columns)) - self.flagged_positions
+        non_mine_buttons = set((r, c) for r in range(self.rows) for c in range(self.columns) if (r * self.columns + c) not in self.mine_positions)
         opened_buttons = set()
         for r in range(self.rows):
             for c in range(self.columns):
